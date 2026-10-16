@@ -141,8 +141,6 @@ Main libraries: pandas, numpy, scikit-learn, matplotlib, sentence-transformers, 
 
 ## How this was built
 
-This project is a collaboration between Shilpa Kibe and Claude (Anthropic's AI assistant).
-
 This is a learning project. It applies concepts from data science, ML, NLP and GenAI to the L&D work I have done for 18+ years.
 
 ---
