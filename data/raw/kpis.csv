@@ -1,0 +1,5 @@
+kpi_id,goal_id,kpi_text,target_value,target_date,kpi_type
+K1.1,G1,% of client learning programs using AI-personalized path generation,25%,FY27,qualitative_program_level
+K1.2,G1,Average client-reported learner satisfaction score for personalized paths,4.2/5,FY27,qualitative_program_level
+K2.1,G2,% of Content Dev staff certified in at least DS+ML fundamentals,60%,FY27,computed_competency_driven
+K2.2,G2,Average KSB gap-closure rate per employee per assessment cycle (annual),6 KSBs/year,ongoing,computed_aggregate

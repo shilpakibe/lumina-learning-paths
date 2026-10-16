@@ -1,0 +1,17 @@
+question_id,question_text,question_type,linked_competency_id,response_scale
+Q001,Rate your current proficiency level in: AI-Augmented Content Design,proficiency,COMP01,proficiency_scale (1-4)
+Q002,Rate your current proficiency level in: Data-Driven Learning Analytics,proficiency,COMP02,proficiency_scale (1-4)
+Q003,Rate your current proficiency level in: NLP-Based Content Curation,proficiency,COMP03,proficiency_scale (1-4)
+Q004,Rate your current proficiency level in: Personalization & Adaptive Design,proficiency,COMP04,proficiency_scale (1-4)
+Q005,Rate your current proficiency level in: Instructional Design Fundamentals,proficiency,COMP05,proficiency_scale (1-4)
+Q006,Rate your current proficiency level in: Stakeholder & Client Consulting,proficiency,COMP06,proficiency_scale (1-4)
+Q007,Rate your current proficiency level in: GenAI Tool Fluency,proficiency,COMP07,proficiency_scale (1-4)
+Q008,Rate your current proficiency level in: Solution Architecture for Learning Systems,proficiency,COMP08,proficiency_scale (1-4)
+Q009,Rate your current proficiency level in: Competency & Skills Taxonomy Design,proficiency,COMP09,proficiency_scale (1-4)
+Q010,Rate your current proficiency level in: QA for AI-Generated Content,proficiency,COMP10,proficiency_scale (1-4)
+Q011,I have the knowledge/skill needed to apply AI-Augmented Content Design in my daily work,comb_capability,COMP01,"1-5 Likert (free text, no dedicated lookup table)"
+Q012,I have the knowledge/skill needed to apply NLP-Based Content Curation in my daily work,comb_capability,COMP03,"1-5 Likert (free text, no dedicated lookup table)"
+Q013,My role/environment gives me the opportunity to practice GenAI Tool Fluency regularly,comb_opportunity,COMP07,"1-5 Likert (free text, no dedicated lookup table)"
+Q014,My role/environment gives me the opportunity to practice Solution Architecture for Learning Systems regularly,comb_opportunity,COMP08,"1-5 Likert (free text, no dedicated lookup table)"
+Q015,I am motivated to improve my AI-Augmented Content Design skills,comb_motivation,COMP01,"1-5 Likert (free text, no dedicated lookup table)"
+Q016,I am motivated to improve my Personalization & Adaptive Design skills,comb_motivation,COMP04,"1-5 Likert (free text, no dedicated lookup table)"

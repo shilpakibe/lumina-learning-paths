@@ -1,0 +1,14 @@
+# Jupyter / Colab
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets and local settings
+.env

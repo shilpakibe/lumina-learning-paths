@@ -1,0 +1,5 @@
+role_id,job_family_id,role_name,is_phase1_focus_role
+ROLE01,JF01,Instructional Design Lead,True
+ROLE02,JF01,Instructional Design Manager,False
+ROLE03,JF02,Content Designer,False
+ROLE04,JF02,Capability Development/Solution Architect,True

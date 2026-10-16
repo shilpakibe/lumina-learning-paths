@@ -1,0 +1,6 @@
+kpi_id,competency_id,contribution_weight
+K2.1,COMP01,primary
+K2.1,COMP02,primary
+K2.1,COMP07,primary
+K2.1,COMP03,secondary
+K2.1,COMP04,secondary

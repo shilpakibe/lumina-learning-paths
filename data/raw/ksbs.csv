@@ -1,0 +1,31 @@
+ksb_id,competency_id,ksb_type,ksb_text
+KSB001,COMP01,knowledge,Understands capabilities/limitations of GenAI tools for content drafting
+KSB002,COMP01,skill,Can prompt-engineer GenAI tools to produce first-draft learning content
+KSB003,COMP01,behavior,Iteratively reviews and refines AI-drafted content rather than accepting output as-is
+KSB004,COMP02,knowledge,"Understands key learning metrics (completion rate, assessment scores, time-to-competency)"
+KSB005,COMP02,skill,Can build/read dashboards to track learning program effectiveness
+KSB006,COMP02,behavior,"Uses data to justify design decisions, not just intuition"
+KSB007,COMP03,knowledge,"Understands basic NLP concepts (keyword extraction, embeddings, similarity matching)"
+KSB008,COMP03,skill,Can apply keyword/embedding-based tagging to classify content against a taxonomy
+KSB009,COMP03,behavior,Validates NLP-driven tags/matches against subject-matter judgment before publishing
+KSB010,COMP04,knowledge,Understands principles of adaptive learning path design
+KSB011,COMP04,skill,Can configure/design a learner profile → path mapping logic
+KSB012,COMP04,behavior,"Designs for diverse learner starting points, not a single ""average"" learner"
+KSB013,COMP05,knowledge,Knows ADDIE / competency-based design models
+KSB014,COMP05,skill,Can write measurable learning objectives
+KSB015,COMP05,behavior,Applies design consistently across content types
+KSB016,COMP06,knowledge,Understands client's business context and compliance needs
+KSB017,COMP06,skill,Can translate vague client asks into a structured learning solution brief
+KSB018,COMP06,behavior,Proactively manages client expectations on AI-generated content accuracy
+KSB019,COMP07,knowledge,Knows landscape of GenAI authoring/content tools
+KSB020,COMP07,skill,Can operate at least one GenAI content tool end-to-end in a real workflow
+KSB021,COMP07,behavior,Stays current with new tool releases relevant to L&D
+KSB022,COMP08,knowledge,"Understands system components of a learning tech stack (LMS, content repo, analytics)"
+KSB023,COMP08,skill,Can design a data flow diagram for a personalized learning system
+KSB024,COMP08,behavior,"Designs for scalability/reusability, not one-off solutions"
+KSB025,COMP09,knowledge,Understands KSB frameworks and taxonomy design principles
+KSB026,COMP09,skill,Can decompose a competency into measurable KSBs
+KSB027,COMP09,behavior,Keeps taxonomy consistent and non-redundant across roles
+KSB028,COMP10,knowledge,"Understands common AI content risks (hallucination, bias, compliance gaps)"
+KSB029,COMP10,skill,Can run a structured QA review checklist on AI-generated content
+KSB030,COMP10,behavior,Flags/escalates content that fails QA rather than letting it pass silently

@@ -1,0 +1,4 @@
+office_id,org_id,office_name,office_role_description
+OFF001,ORG001,"Pune, India","Development & Delivery Center — Content Dev, Coding, Testing, QA, Innovation Incubator (partial), most of PMO"
+OFF002,ORG001,"Austin, USA","Business Development Hub — North America (Pharma, Banking/Finance verticals); Innovation Incubator (partial)"
+OFF003,ORG001,"Manchester, UK","Business Development Hub — UK/EU (Telecom, ERP/Software, BPO verticals); Innovation Incubator (partial)"

@@ -1,0 +1,7 @@
+kpi_id,metric,value,target
+K2.2,Actual KSBs closed per employee (prior to current year),3.2,6 KSBs/year
+K2.2,Projected KSBs closed per employee (optimistic),12.1,6 KSBs/year
+K2.2,Projected KSBs closed per employee (conservative),9.6,6 KSBs/year
+K2.1,% meeting all primary K2.1 competencies (now),9.1,60%
+K2.1,% meeting all primary K2.1 competencies (optimistic),100.0,60%
+K2.1,% meeting all primary K2.1 competencies (conservative),70.9,60%

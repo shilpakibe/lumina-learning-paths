@@ -1,0 +1,5 @@
+proficiency_level,level_label,level_description
+1,Awareness,"Knows it exists, no practical application"
+2,Foundational,Can apply with guidance
+3,Practitioner,"Applies independently, reliably"
+4,Advanced/Expert,"Applies at scale, mentors others"

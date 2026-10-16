@@ -1,0 +1,1150 @@
+{
+  "project_metadata": {
+    "project_name": "AI-Personalized Learning Paths — Lumina Learning Group (Synthetic Org Simulation)",
+    "brief_reference": "Self-directed portfolio project, not tied to a course brief. Designed to showcase Purdue PG cert skills (DS-ML-DL-NLP completed; GenAI in progress) applied to an L&D problem.",
+    "repo_name_placeholder": "lumina-learning-paths",
+    "date_started": "2026-09-07",
+    "current_status": "Phase 1 is complete (NB01 to NB04, Oct 2026). NB04 is read only and produced 4 figures in reports/figures: curation flow (30 matches: 11 auto-approved, 19 L&D reviewed: 12 approved, 4 switched, 2 replaced, 1 content gap KSB018); path phasing (caps 35 course hours and 6 KSBs per cycle; 8 / 22 / 25 employees need 1 / 2 / 3 or more cycles, ADR-0050, ADR-0055); two contrasting paths EMP0476 ID Lead vs EMP0188 Solution Architect with privacy gate (ADR-0052); KPI dashboard (K2.2 and K2.1, actual vs projected vs target, best-case footnote). 55 ADRs. Packaged for GitHub (Oct 2026). Phase 2: GenAI upgrade, coming soon. Phase 3: coming soon.",
+    "certification_context": {
+      "learner_background": "L&D professional, 18+ years experience, upskilling in DS/ML/DL/NLP/GenAI (Purdue PG certification program)",
+      "certification": "Purdue professional certification program",
+      "completed_courses": [
+        "DS",
+        "ML",
+        "DL",
+        "NLP"
+      ],
+      "in_progress_courses": [
+        "GenAI"
+      ],
+      "why_this_project": "Demonstrates applied AI/NLP skills within the learner's own domain of expertise (L&D/instructional design), rather than a generic public dataset project. Chosen to complement the NLPCapstone01 (K8 Reviews) capstone with a domain-authentic, self-designed system.",
+      "learning_goal": "Build a full pipeline, from org/strategy/competency modeling through NLP-driven course matching and personalized path generation, designed to extend in later phases without a schema rebuild."
+    },
+    "thread_structure": {
+      "pattern_source": "One thread per major pipeline step, config.json + decisions.md updated at the end of each thread. See docs/pipeline_step_tracker.md for the step-to-thread mapping.",
+      "threads": [
+        {
+          "thread": 1,
+          "name": "Ideation & Scenario Design",
+          "status": "complete",
+          "output": "config.json (in config/), decisions.md and SETUP_INSTRUCTIONS.md (in docs/) - uploaded to Drive; master_prompt.md uploaded to Claude project knowledge base only, not Drive",
+          "steps_covered": "B1-B5"
+        },
+        {
+          "thread": "1.5",
+          "name": "Roadmap & Scope Brainstorm + Architecture Sketch (B13)",
+          "status": "complete",
+          "output": "ADR-0016 through ADR-0024; docs/logic_model.md; docs/pipeline_step_tracker.md; docs/documentation_tracking.md; light updates to 00_problem_statement.md; technical architecture sketch (SVG); plain-language annotated architecture diagram (PPT, P1/P2 tagged)",
+          "steps_covered": "B6, B7 (decided), B13 (done)"
+        },
+        {
+          "thread": 2,
+          "name": "Full Schema Formalization",
+          "status": "complete",
+          "output": "docs/04_schema_reference.md (finalized field-level schema, six schema conventions, 30-item KSB list); ADR-0025 through ADR-0028; 03_pipeline_steps.xlsx formally superseded by pipeline_step_tracker.md",
+          "steps_covered": "P1"
+        },
+        {
+          "thread": 3,
+          "name": "NB01 — Synthetic Data Generation (all phases, single upfront pass)",
+          "status": "complete",
+          "output": "NB01_synthetic_data_generation.ipynb, /data/raw/*.csv (input tables); ADR-0029 through ADR-0032; docs/04_schema_reference.md updated (vertical, course_source fields; corrected 430-employee scope)",
+          "steps_covered": "P2-P6"
+        },
+        {
+          "thread": 4,
+          "name": "NB02 — Gap Computation, Matching (TF-IDF + embeddings comparison), Duplicate Detection, Curation, Classification, Topic Modeling",
+          "status": "complete",
+          "output": "NB02_nlp_ksb_course_matching.ipynb; data/processed/employee_ksb_gaps.csv (1,650 rows); data/processed/course_ksb_mapping.csv (9,240 rows); data/raw/courses.csv updated in place (ksb_layer, likely_duplicate_of, duplicate_cluster_id, plus helper column course_text_feature); outputs/lda_topic_words.csv; outputs/lda_topic_vs_competency.csv",
+          "steps_covered": "P6-P11 (incl. P9a, P9b, P9c)",
+          "thread4_additions": "ADR-0033 through ADR-0037 (kickoff and KPI traceability) and ADR-0038 through ADR-0042 (NB02 findings). NB01 re-run mid-thread to persist target_ksb_id / target_competency_id."
+        },
+        {
+          "thread": 5,
+          "name": "NB03 — Path Generation, Recommendation, Access Pattern",
+          "status": "complete",
+          "output": "NB03_path_generation_recommendation.ipynb; data/processed/learning_path_recommendations.csv (687 rows); data/processed/course_ksb_mapping.csv (curation_status updated); outputs/curation_review_sheet.csv; outputs/curation_review_sheet_completed.csv; outputs/kpi_impact_rollup.csv. NB01 (C1.6, C1.6a, C2.3a, Cluster 4 guard) and NB02 (Steps 2.1.1-2.1.3) re-run for source fixes.",
+          "steps_covered": "P12, P12a, P13 (plus P9c completion)",
+          "thread5_additions": "ADR-0043 through ADR-0048: blind L&D review, content gaps as 'coming soon', path sequencing rules, KPI rollup in NB03 with two projections, source-of-truth fixes and re-run guards, privacy demo and 'GDPR-aligned' wording."
+        },
+        {
+          "thread": 6,
+          "name": "NB04 — Dashboards & Visualization",
+          "status": "complete",
+          "output": "NB04_visualization_demo.ipynb; reports/figures/fig_4_2_curation_flow.png, fig_4_3_cycles_needed.png, fig_4_4_paths_idlead_vs_sa.png, fig_4_5_kpi_dashboard.png. Read only: no CSV or schema change.",
+          "steps_covered": "P14, P15, P15a (path phasing), plus Step 4.1.5 minimum group size and Step 4.3.5 role/office breakdown",
+          "thread6_additions": "ADR-0050 (path phasing, two caps), ADR-0051 (figure conventions), ADR-0052 (demo selection and privacy gate on charts, SSO/Workday real-life note), ADR-0053 (private backlog), ADR-0054 (two-layer notes, substep-numbered code comments), ADR-0055 (minimum group size, small-group suppression in reporting)."
+        },
+        {
+          "thread": 11,
+          "name": "README & Packaging",
+          "status": "complete",
+          "output": "README.md, architecture diagram (reports/figures/fig_0_architecture.png), LICENSE, LICENSE-DATA-DOCS, requirements.txt, .gitignore",
+          "steps_covered": "B11, B14"
+        },
+        {
+          "thread": 12,
+          "name": "GitHub Setup Walkthrough",
+          "status": "in progress",
+          "output": "live GitHub repo (lumina-learning-paths)",
+          "steps_covered": "P28"
+        },
+        {
+          "thread": "later",
+          "name": "Phase 2: GenAI upgrade",
+          "status": "coming soon"
+        },
+        {
+          "thread": "later",
+          "name": "Phase 3",
+          "status": "coming soon"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "compute": "Google Colab (free tier, CPU-only — no GPU needed for this project)",
+    "storage": "Google Drive, mounted at /content/drive",
+    "drive_root_path": "/content/drive/MyDrive/Portfolio/LuminaLearningGroup",
+    "mount_confirmed": true,
+    "folder_structure_migrated": true,
+    "migration_script": "01_migrate_folder_structure.py (idempotent - safe to re-run)",
+    "eventual_target": "GitHub repository (placeholder name: lumina-learning-paths), migrated after Colab build is complete",
+    "colab_mount_gotcha_note": "CORRECTED Thread 4 (ADR-0033) — every notebook's first cell must be idempotent: `if not os.path.ismount('/content/drive'): drive.mount('/content/drive')`. The rm -rf fix is retained only as manual, one-off troubleshooting for the specific stale-mountpoint error ('ValueError: Mountpoint must not already contain files') — never as a standing pipeline cell.",
+    "csv_encoding_note": "Added Thread 4. When content is pasted into a CSV by hand (arXiv abstracts in courses.csv; the curation review sheet), save it as UTF-8 (Excel: 'CSV UTF-8 (Comma delimited)'). NB03 writes and reads the review sheet with encoding='utf-8-sig' so it opens cleanly in Excel.",
+    "rerun_safety_note": "Added Thread 5 (ADR-0047). Fixes go into generating code, never into a generated CSV. NB01 Cluster 4 save is behind REGENERATE_COURSES = False (protects hand-pasted arXiv abstracts and NB02 columns; still writes on a fresh setup). NB03 Step 3.2.1 exports the review sheet only when ld_reviewed rows exist; outputs/curation_review_sheet_completed.csv is never written by code. NB01 and NB03 are safe to run end to end.",
+    "extra_packages_note": "NB02 additionally uses sentence-transformers, networkx and gensim (coherence scores). Add to requirements.txt at GitHub packaging (P28)."
+  },
+  "paths": {
+    "root_dir": "/content/drive/MyDrive/Portfolio/LuminaLearningGroup",
+    "config_dir": "config",
+    "config_file": "config/config.json",
+    "data_dir": "data",
+    "raw_data_dir": "data/raw",
+    "processed_data_dir": "data/processed",
+    "notebooks_dir": "notebooks",
+    "docs_dir": "docs",
+    "adr_dir": "docs/ADRs",
+    "reports_dir": "reports",
+    "figures_dir": "reports/figures",
+    "output_dir": "outputs",
+    "logic_model_file": "docs/logic_model.md",
+    "pipeline_tracker_file": "docs/pipeline_step_tracker.md",
+    "documentation_tracking_file": "docs/documentation_tracking.md",
+    "schema_reference_file": "docs/04_schema_reference.md"
+  },
+  "folder_structure": {
+    "note": "GitHub-ready layout (adapted from the common 'cookiecutter data science' convention). See ADR-0014.",
+    "tree": [
+      "lumina-learning-paths/",
+      "├── README.md",
+      "├── LICENSE              (code: PolyForm Noncommercial 1.0.0)",
+      "├── LICENSE-DATA-DOCS    (data, docs, figures: CC BY-NC 4.0)",
+      "├── requirements.txt",
+      "├── .gitignore",
+      "├── config/",
+      "│   └── config.json",
+      "├── data/",
+      "│   ├── raw/          (17 input tables)",
+      "│   └── processed/    (employee_ksb_gaps, course_ksb_mapping, learning_path_recommendations)",
+      "├── notebooks/",
+      "│   ├── NB01_synthetic_data_generation.ipynb",
+      "│   ├── NB02_nlp_ksb_course_matching.ipynb",
+      "│   ├── NB03_path_generation_recommendation.ipynb",
+      "│   └── NB04_visualization_demo.ipynb",
+      "├── docs/",
+      "│   ├── decisions.md",
+      "│   ├── 04_schema_reference.md",
+      "│   ├── logic_model.md",
+      "│   ├── pipeline_step_tracker.md",
+      "│   ├── 00_problem_statement.md",
+      "│   └── SETUP_INSTRUCTIONS.md",
+      "├── reports/",
+      "│   └── figures/      (fig_0_architecture, fig_4_2_curation_flow, fig_4_3_cycles_needed, fig_4_4_paths_idlead_vs_sa, fig_4_5_kpi_dashboard)",
+      "└── outputs/          (lda_topic_words.csv, lda_topic_vs_competency.csv, curation_review_sheet.csv, curation_review_sheet_completed.csv, kpi_impact_rollup.csv)"
+    ]
+  },
+  "scenario": {
+    "org_name": "Lumina Learning Group (LLG)",
+    "org_type": "Fictional workforce learning & content-development services company",
+    "founded_year": 2011,
+    "revenue_usd": 120000000,
+    "headcount_total": 1000,
+    "in_scope_headcount_note": "Of the org's full 1000 headcount, only 430 (the 2 in-scope job families' 4 roles, per the real org chart) are generated as employees rows. The remaining ~570 exist in the org chart/scenario narrative only. See ADR-0032. Employee IDs are drawn from a 1-1,400 pool, with gaps standing in for other departments and leavers (ADR-0047).",
+    "offices": [
+      {
+        "office": "Pune, India",
+        "role": "Development & Delivery Center — Content Dev, Coding, Testing, QA, Innovation Incubator (partial), most of PMO"
+      },
+      {
+        "office": "Austin, USA",
+        "role": "Business Development Hub — North America (Pharma, Banking/Finance verticals); Innovation Incubator (partial)"
+      },
+      {
+        "office": "Manchester, UK",
+        "role": "Business Development Hub — UK/EU (Telecom, ERP/Software, BPO verticals); Innovation Incubator (partial)"
+      }
+    ],
+    "client_verticals": [
+      "Pharma",
+      "Telecom",
+      "Banking/Finance",
+      "ERP/Software",
+      "Call Center BPO"
+    ],
+    "client_markets_note": "Japan included as an APAC client market, served out of Pune — no 4th office added (ADR-0006).",
+    "research_incubator_note": "Researchers distributed across all 3 offices for a '360-degree perspective' — deliberate design choice, not a schema artifact.",
+    "source_org_chart": "20260907OPModel.xlsx (uploaded by user; org structure basis and exact headcount source for employees.csv — see ADR-0029, ADR-0032)"
+  },
+  "strategic_goals": {
+    "total_goals_defined": 5,
+    "phase1_active_goals": [
+      {
+        "goal_id": "G1",
+        "goal_text": "Launch GenAI-personalized learning paths as a client-facing offering"
+      },
+      {
+        "goal_id": "G2",
+        "goal_text": "Upskill internal Content Dev workforce in DS/ML/NLP/GenAI"
+      }
+    ],
+    "parked_goals": [
+      "Grow Banking/Finance vertical revenue via compliance-training specialization",
+      "Improve certification/competency completion rates org-wide",
+      "Cut content-development cycle time using AI-augmented authoring"
+    ]
+  },
+  "kpis": [
+    {
+      "kpi_id": "K1.1",
+      "goal_id": "G1",
+      "kpi_text": "% of client learning programs using AI-personalized path generation",
+      "target_value": "25%",
+      "target_date": "FY27",
+      "kpi_type": "qualitative_program_level"
+    },
+    {
+      "kpi_id": "K1.2",
+      "goal_id": "G1",
+      "kpi_text": "Average client-reported learner satisfaction score for personalized paths",
+      "target_value": "4.2/5",
+      "target_date": "FY27",
+      "kpi_type": "qualitative_program_level"
+    },
+    {
+      "kpi_id": "K2.1",
+      "goal_id": "G2",
+      "kpi_text": "% of Content Dev staff certified in at least DS+ML fundamentals",
+      "target_value": "60%",
+      "target_date": "FY27",
+      "kpi_type": "computed_competency_driven"
+    },
+    {
+      "kpi_id": "K2.2",
+      "goal_id": "G2",
+      "kpi_text": "Average KSB gap-closure rate per employee per assessment cycle (annual)",
+      "target_value": "6 KSBs/year",
+      "target_date": "ongoing",
+      "kpi_type": "computed_aggregate"
+    }
+  ],
+  "kpis_generation_note": "Thread 5 (ADR-0047): kpis (with kpi_type and annual K2.2 wording) is generated in NB01 C1.6 code, with an assert check, after a hand edit to kpis.csv was reverted by an NB01 re-run.",
+  "kpi_competency_mapping": {
+    "note": "Added Thread 4 (ADR-0037). Populated for K2.1 only; K1.1/K1.2 (program-level, tracked externally) and K2.2 (aggregate across whichever competencies apply) are deliberately excluded. Generated in NB01 C1.6a code since Thread 5 (ADR-0047).",
+    "rows": [
+      {
+        "kpi_id": "K2.1",
+        "competency_id": "COMP01",
+        "contribution_weight": "primary"
+      },
+      {
+        "kpi_id": "K2.1",
+        "competency_id": "COMP02",
+        "contribution_weight": "primary"
+      },
+      {
+        "kpi_id": "K2.1",
+        "competency_id": "COMP07",
+        "contribution_weight": "primary"
+      },
+      {
+        "kpi_id": "K2.1",
+        "competency_id": "COMP03",
+        "contribution_weight": "secondary"
+      },
+      {
+        "kpi_id": "K2.1",
+        "competency_id": "COMP04",
+        "contribution_weight": "secondary"
+      }
+    ],
+    "cross_ref_adr": "ADR-0037, ADR-0047"
+  },
+  "job_families": [
+    {
+      "job_family_id": "JF01",
+      "job_family_name": "Instructional Design",
+      "roles": [
+        {
+          "role_id": "ROLE01",
+          "role_name": "Instructional Design Lead",
+          "career_grade": "CG60",
+          "headcount": 50,
+          "is_phase1_focus_role": true
+        },
+        {
+          "role_id": "ROLE02",
+          "role_name": "Instructional Design Manager",
+          "career_grade": "CG70",
+          "headcount": 25,
+          "is_phase1_focus_role": false
+        }
+      ]
+    },
+    {
+      "job_family_id": "JF02",
+      "job_family_name": "Content/Solution Architecture",
+      "roles": [
+        {
+          "role_id": "ROLE03",
+          "role_name": "Content Designer",
+          "career_grade": "CG50",
+          "headcount": 350,
+          "is_phase1_focus_role": false
+        },
+        {
+          "role_id": "ROLE04",
+          "role_name": "Capability Development/Solution Architect",
+          "career_grade": "CG80",
+          "headcount": 5,
+          "is_phase1_focus_role": true
+        }
+      ]
+    }
+  ],
+  "job_family3_roadmap_note": "Project Management (AI-augmented delivery) noted as a possible future extension; not built (ADR-0004).",
+  "competencies": [
+    {
+      "competency_id": "COMP01",
+      "name": "AI-Augmented Content Design"
+    },
+    {
+      "competency_id": "COMP02",
+      "name": "Data-Driven Learning Analytics"
+    },
+    {
+      "competency_id": "COMP03",
+      "name": "NLP-Based Content Curation"
+    },
+    {
+      "competency_id": "COMP04",
+      "name": "Personalization & Adaptive Design"
+    },
+    {
+      "competency_id": "COMP05",
+      "name": "Instructional Design Fundamentals"
+    },
+    {
+      "competency_id": "COMP06",
+      "name": "Stakeholder & Client Consulting"
+    },
+    {
+      "competency_id": "COMP07",
+      "name": "GenAI Tool Fluency"
+    },
+    {
+      "competency_id": "COMP08",
+      "name": "Solution Architecture for Learning Systems"
+    },
+    {
+      "competency_id": "COMP09",
+      "name": "Competency & Skills Taxonomy Design"
+    },
+    {
+      "competency_id": "COMP10",
+      "name": "QA for AI-Generated Content"
+    }
+  ],
+  "proficiency_scale": {
+    "1": "Awareness — knows it exists, no practical application",
+    "2": "Foundational — can apply with guidance",
+    "3": "Practitioner — applies independently, reliably",
+    "4": "Advanced/Expert — applies at scale, mentors others"
+  },
+  "required_proficiency_levels": {
+    "note": "Deliberately bimodal/asymmetric per role to mirror real business scenario, not uniform across competencies. See decisions.md ADR-0008.",
+    "Instructional Design Lead": {
+      "COMP01": 4,
+      "COMP02": 3,
+      "COMP03": 2,
+      "COMP04": 4,
+      "COMP05": 4,
+      "COMP06": 4,
+      "COMP07": 3,
+      "COMP08": 1,
+      "COMP09": 3,
+      "COMP10": 3
+    },
+    "Solution Architect": {
+      "COMP01": 2,
+      "COMP02": 3,
+      "COMP03": 4,
+      "COMP04": 3,
+      "COMP05": 1,
+      "COMP06": 3,
+      "COMP07": 4,
+      "COMP08": 4,
+      "COMP09": 3,
+      "COMP10": 3
+    }
+  },
+  "ksb_count_target": {
+    "competencies": 10,
+    "ksbs_per_competency": "3 (Knowledge/Skill/Behavior split)",
+    "total_ksbs_final": 30,
+    "status": "finalized in Thread 2 — see docs/04_schema_reference.md and ADR-0028"
+  },
+  "employee_generation": {
+    "status": "complete (Thread 3 / NB01); IDs re-keyed Thread 5 (ADR-0047)",
+    "total_employees": 430,
+    "source": "Real org chart (20260907OPModel.xlsx) headcount for the 4 roles under JF01/JF02 — not an estimate. See ADR-0032.",
+    "employee_id_rule": "NB01 C2.3a (ADR-0047): hire_year = 2026 - tenure_years; employees shuffled (seed 42) then sorted by hire year; IDs drawn with random.sample from a 1-1,400 pool (EMP_ID_POOL = 1400) and assigned in joining order. Observed range EMP0003-EMP1399, non-contiguous. Low IDs = longest tenure; roles interleaved.",
+    "office_assignment_rule": "Content Designer, Instructional Design Lead, Instructional Design Manager (425 total) -> all Pune (OFF001). Solution Architect (5 total) -> 1 Pune, 2 Austin, 2 Manchester.",
+    "vertical_assignment": "Even 5-way split within each role, matching the org chart's own per-vertical headcount counts. See ADR-0029.",
+    "tenure_rule": "Capped at 15 years (org founded 2011). Triangular distribution by career grade, low-to-high: CG50 (0,2,8), CG60 (1,4,12), CG70 (3,7,15), CG80 (5,10,15).",
+    "certification_count_rule": "Uniform baseline (3-4, vertical-onboarding + role-tool certs) + variable 0-5 (DS/ML/GenAI upskilling progress toward K2.1). Same logic across all 4 roles.",
+    "assessment_scope": "assessment_responses generated only for the 55 employees in the 2 Phase 1 focus roles (Instructional Design Lead x50, Solution Architect x5) — not all 430. Regenerated Thread 5 after the ID re-key."
+  },
+  "course_sourcing_strategy": {
+    "primary_dataset": "Procedurally generated synthetic course catalog (150 rows) built by a COURSE_SPEC-style generator (ADR-0034), plus 4 real arXiv-abstract rows (CRS151-CRS154) = 154 rows. All 30 KSBs covered by 3-5 courses each; 20 orphan/generic courses.",
+    "credibility_sample": "4 courses (CRS151-CRS154) using real arXiv abstracts as a separate NLP proof-of-concept, clearly labeled. Abstracts pasted in by the user; the CSV must be saved as UTF-8. No target_ksb_id / target_competency_id.",
+    "rejected_approach": "Direct web scraping of course content — legal/stability risk, replaced by fake repository + manually-collected real excerpts",
+    "course_source_field": "courses.course_source (ADR-0031) simulates a multi-source ingestion layer: Lumina_LMS, KonectIn, Ksera, Hiword, arXiv. Provider mix: Lumina_LMS 91 / KonectIn 23 / Ksera 20 / Hiword 16 / arXiv 4. Shown to the NB03 curation reviewer.",
+    "catalog_generation_thread4": "ADR-0034: courses.csv is built by a COURSE_SPEC-style procedural generator, mirroring the parametric-generation discipline used for employees.csv (ROLE_SPEC).",
+    "label_columns_thread4": "ADR-0038: target_ksb_id and target_competency_id persisted (24 NULL). Benchmarking only; never used as inputs by the matching engines and hidden from the NB03 reviewer.",
+    "catalog_protection_thread5": "ADR-0047: NB01 Cluster 4 save behind REGENERATE_COURSES = False. A deliberate rebuild requires re-pasting the arXiv abstracts and re-running NB02.",
+    "title_clash_note": "Thread 5: template titles mean two different courses can share a title (e.g. CRS083 and CRS089, 'GenAI Tool Fluency for L&D Professionals'). Flagged during curation as a catalog-quality issue."
+  },
+  "matching_engine": {
+    "note": "ADR-0035 (kickoff) and Thread 4 results. Built in NB02.",
+    "production_method": "tfidf — TF-IDF cosine similarity (521-word vocabulary on the full catalog + KSB text)",
+    "comparison_method": "embedding — Sentence-BERT all-MiniLM-L6-v2 cosine similarity (384 dimensions)",
+    "persistence": "BOTH tfidf and embedding rows persisted to course_ksb_mapping (4,620 each, 9,240 total), flagged by is_production (True only for tfidf). is_recommended is flagged separately per method (30 True each).",
+    "agreement_result": "TF-IDF and embeddings pick the same top course for 17 of 30 KSBs. Average top score 0.669 (TF-IDF) vs 0.690 (embedding). Average score gap 0.090, largest 0.255 (KSB003).",
+    "accuracy_result": "Using target_ksb_id, the top course for each KSB targets the right KSB for 30/30 under both methods. Disagreements mean two valid candidates, not one method being wrong (ADR-0039). This made the NB03 review a choice among valid courses.",
+    "explainability": "TF-IDF match_explanation lists the top shared keywords; embedding rows carry a generic semantic-similarity note.",
+    "duplicate_detection": "Course-to-course cosine similarity on the MiniLM vectors. Threshold 0.95 chosen from the distribution. Connected components give 12 clusters covering 27 courses (courses.likely_duplicate_of, courses.duplicate_cluster_id). Detection only; nothing is removed or merged. NB03 per-path duplicate check needed 0 swaps.",
+    "cross_ref_adr": "ADR-0035, ADR-0041, ADR-0045"
+  },
+  "curation_layer": {
+    "note": "ADR-0036 design; ADR-0042 NB02 rule; ADR-0043 NB03 L&D review (resolved).",
+    "field": "course_ksb_mapping.curation_status",
+    "values": [
+      "algo_suggested",
+      "ld_reviewed",
+      "ld_approved",
+      "ld_modified",
+      "ld_rejected"
+    ],
+    "nb02_rule": "For the 30 TF-IDF is_recommended rows: ld_approved if methods agree AND score gap < 0.10, else ld_reviewed. Result 11 ld_approved, 19 ld_reviewed.",
+    "nb03_review": "Blind side-by-side review sheet (suggested TF-IDF course vs alternative MiniLM course; title, description, course_source, format, duration, ksb_layer, duplicate cluster, score; target labels hidden). Decisions: approve / switch / reject + replacement_course_id / reject with no replacement (content gap). Every reject or switch has a reviewer_note.",
+    "status_mapping": "approve -> ld_approved; switch or reject-with-replacement -> chosen row ld_modified and algorithm's pick ld_rejected; reject without replacement -> ld_rejected (content gap).",
+    "result": "12 approve, 4 switch (KSB010, KSB014, KSB015, KSB029), 2 replace (KSB019 -> CRS085, KSB025 -> CRS114), 1 content gap (KSB018). TF-IDF rows: 23 ld_approved, 6 ld_modified, 7 ld_rejected, 0 ld_reviewed, 4,584 algo_suggested. Embedding rows all algo_suggested. 29 of 30 KSBs have exactly one eligible course.",
+    "audit_files": [
+      "outputs/curation_review_sheet.csv (export, protected from overwrite)",
+      "outputs/curation_review_sheet_completed.csv (reviewer decisions, hand-edited, CSV UTF-8, read-only to code)"
+    ],
+    "downstream_rule": "Only ld_approved / ld_modified rows are eligible input to learning_path_recommendations.",
+    "cross_ref_adr": "ADR-0036, ADR-0042, ADR-0043"
+  },
+  "path_engine": {
+    "note": "Added Thread 5. NB03 Steps 3.3-3.4 (ADR-0044, ADR-0045).",
+    "input": "employee_ksb_gaps with gap_size > 0 (687 open gaps: 540 x 1, 144 x 2, 3 x 3) + one approved course per KSB.",
+    "method": "rule_based",
+    "ordering": "Courses first, content gaps last; biggest gap first; within a competency Knowledge > Skill > Behavior (ksbs.ksb_type).",
+    "shared_course": "A course serving two KSBs for one employee takes one step (shared sequence_order); rationale says 'Also covers ...'. One row per open gap kept for traceability. 98 rows use a shared course (CRS085, CRS114).",
+    "duplicate_check": "Later near-copy in the same duplicate_cluster_id replaced by the earlier course. 0 swaps needed.",
+    "ksb_layer_use": "Fit check only: mismatch between course ksb_layer and the KSB's ksb_type is noted in the rationale; no reordering or dropping.",
+    "content_gaps": "KSB018 has no approved course; 19 employees get a 'coming soon' step. Message in CONTENT_GAP_MESSAGES: 'New workshop/simulation planned for Q1 2027. Meanwhile, use your manager 1:1s or the mentor-mentee programme to build this skill.'",
+    "result": "learning_path_recommendations.csv: 687 rows, 55 employees, 5-21 steps (mean 11.6).",
+    "cross_ref_adr": "ADR-0044, ADR-0045"
+  },
+  "comparison_benchmarks": {
+    "note": "Comparison/exploratory only (ADR-0023). Not persisted to course_ksb_mapping. Artifacts saved to outputs/.",
+    "classifier": {
+      "model": "Logistic Regression on TF-IDF features (vectorizer fit on train only)",
+      "data": "130 labeled courses, stratified 91 train / 39 test, random_state=42",
+      "result": "39/39 correct (100%). TF-IDF scored with full match_score also 39/39.",
+      "limitation": "Template-generated text gives each competency its own vocabulary, so the benchmark cannot separate the methods. Real catalogs would score lower.",
+      "cross_ref_adr": "ADR-0039"
+    },
+    "lda": {
+      "data": "130 labeled courses, CountVectorizer counts",
+      "topic_count_method": "Perplexity showed no elbow; coherence (c_v) used instead. After removing 33 filler words, coherence peaked at k=12 (0.689).",
+      "result": "COMP05 and COMP10 captured cleanly; COMP04, COMP05 and COMP09 share one topic; others spread across 2-3 topics. Roughly recovers competency structure without labels, but not cleanly.",
+      "limitation": "Competency labels were used to find filler words, so that step is not purely unsupervised.",
+      "artifacts": [
+        "outputs/lda_topic_words.csv",
+        "outputs/lda_topic_vs_competency.csv"
+      ],
+      "cross_ref_adr": "ADR-0040"
+    }
+  },
+  "kpi_impact_rollup": {
+    "note": "ADR-0036 design; ADR-0046 implementation (NB03 Step 3.6). Aggregate only, no new table.",
+    "home": "Computed in NB03; charted in NB04 Step 4.5 (fig_4_5_kpi_dashboard.png).",
+    "artifact": "outputs/kpi_impact_rollup.csv (6 rows)",
+    "k22_method": "Actual: competency gaps that moved from positive (prior_year) to zero or below (current_year), x 3 KSBs, averaged per employee. Projected: open gaps with an approved course per employee; optimistic = all close, conservative = only 1-level gaps close in one cycle.",
+    "k21_method": "Proxy: % of the 55 focus-role employees meeting the requirement on all 3 primary K2.1 competencies (COMP01, COMP02, COMP07). Optimistic = every open gap with a course closes; conservative = only 1-level gaps close.",
+    "results": {
+      "K2.2_actual": 3.2,
+      "K2.2_projected_optimistic": 12.1,
+      "K2.2_projected_conservative": 9.6,
+      "K2.2_target": "6 KSBs/year",
+      "K2.1_now_pct": 9.1,
+      "K2.1_projected_optimistic_pct": 100.0,
+      "K2.1_projected_conservative_pct": 70.9,
+      "K2.1_target": "60%"
+    },
+    "insights": "Without targeted paths, K2.2 runs at about half the target. Projected K2.2 is about twice the annual target, so paths should be phased over ~2 cycles. K2.1 optimistic 100% is a ceiling (no content gap in K2.1 competencies).",
+    "limitations": "Best-case projections. Completion is not competence: real gap closure needs reassessment, manager feedback and on-the-job evidence (Logic Model stops at Outputs, ADR-0021). K2.1 covers focus-role employees only and uses competency as a stand-in for certification. K1.1/K1.2 out of scope.",
+    "cross_ref_adr": "ADR-0036, ADR-0037, ADR-0046",
+    "phasing_refinement": "Per-person phasing (ADR-0050): 8 of 55 finish in 1 cycle, 22 in 2, 25 need 3 or more."
+  },
+  "table_schema_summary": {
+    "total_tables": 19,
+    "note": "18 original tables + kpi_competency_mapping (ADR-0037) = 19. All 19 exist as of Thread 5. NB02's intro markdown cell still says 'all 15 tables' from NB01 — worth correcting when convenient.",
+    "input_tables": [
+      "orgs",
+      "offices",
+      "job_families",
+      "roles",
+      "strategic_goals",
+      "kpis",
+      "kpi_competency_mapping",
+      "competencies",
+      "ksbs",
+      "proficiency_scale",
+      "role_competency_requirements",
+      "employees",
+      "employees_pii",
+      "assessment_questions",
+      "assessment_responses",
+      "courses"
+    ],
+    "derived_tables": [
+      "employee_ksb_gaps",
+      "course_ksb_mapping",
+      "learning_path_recommendations"
+    ],
+    "derived_table_status": {
+      "employee_ksb_gaps": "built in NB02 (1,650 rows); rebuilt Thread 5 after ID re-key, gap_size -2 to +3",
+      "course_ksb_mapping": "built in NB02 (9,240 rows); curation_status updated in NB03",
+      "learning_path_recommendations": "built in NB03 (687 rows)"
+    },
+    "full_schema_status": "Full field-level schema finalized in Thread 2, updated in Threads 3, 4 and 5 — see docs/04_schema_reference.md and ADR-0025 through ADR-0048.",
+    "new_tables_thread1.5": [
+      {
+        "table": "employees_pii",
+        "purpose": "Name/email split out of employees, keyed by employee_id only",
+        "cross_ref_adr": "ADR-0016"
+      },
+      {
+        "table": "assessment_questions",
+        "purpose": "Lookup table: question_id, question_text, question_type (proficiency / COM-B: comb_capability, comb_opportunity, comb_motivation), linked_competency_id, response_scale. 16 rows. COM-B rows are collected and held for later use.",
+        "cross_ref_adr": "ADR-0018"
+      },
+      {
+        "table": "assessment_responses",
+        "purpose": "Long format fact table. Two annual cycles. Scoped to 55 focus-role employees, 1,760 rows.",
+        "cross_ref_adr": "ADR-0018"
+      }
+    ],
+    "courses_table_additions_thread1.5": [
+      {
+        "field": "duration_minutes",
+        "purpose": "Summed per path for learning hours (NB03 access demo, NB04 phasing)",
+        "populated": "Phase 1"
+      },
+      {
+        "field": "format",
+        "purpose": "e.g. video/course/job-aid/checklist",
+        "populated": "Phase 1"
+      },
+      {
+        "field": "ksb_layer",
+        "purpose": "Knowledge vs. Skill, via verb-detection (36-verb taxonomy); fit check in NB03 paths (ADR-0045)",
+        "populated": "Phase 1 (NB02: 117 skill / 37 knowledge)"
+      },
+      {
+        "field": "core_learning_or_behavioral_enabler",
+        "purpose": "Reserved. Empty in Phase 1.",
+        "populated": "Reserved. Empty in Phase 1."
+      },
+      {
+        "field": "comb_blueprint",
+        "purpose": "Reserved. Empty in Phase 1.",
+        "populated": "Reserved. Empty in Phase 1."
+      }
+    ],
+    "field_additions_thread3": [
+      {
+        "table": "employees",
+        "field": "vertical",
+        "purpose": "Client vertical assignment (5-way enum)",
+        "cross_ref_adr": "ADR-0029"
+      },
+      {
+        "table": "courses",
+        "field": "course_source",
+        "purpose": "Simulates a multi-source course ingestion layer",
+        "cross_ref_adr": "ADR-0031"
+      }
+    ],
+    "field_additions_thread4": [
+      {
+        "table": "courses",
+        "field": "likely_duplicate_of",
+        "purpose": "Nullable self-FK set by NB02's duplicate detection (27 populated)",
+        "cross_ref_adr": "ADR-0035, ADR-0041"
+      },
+      {
+        "table": "courses",
+        "field": "duplicate_cluster_id",
+        "purpose": "Nullable cluster label (DUPCLUST001-012)",
+        "cross_ref_adr": "ADR-0041"
+      },
+      {
+        "table": "courses",
+        "field": "target_ksb_id",
+        "purpose": "Ground-truth KSB (nullable, 24 NULL). Benchmark use only.",
+        "cross_ref_adr": "ADR-0038"
+      },
+      {
+        "table": "courses",
+        "field": "target_competency_id",
+        "purpose": "Ground-truth competency (nullable, 24 NULL). Benchmark use only.",
+        "cross_ref_adr": "ADR-0038"
+      },
+      {
+        "table": "courses",
+        "field": "course_text_feature",
+        "purpose": "HELPER column saved into courses.csv by NB02. Not part of the schema.",
+        "cross_ref_adr": "ADR-0041"
+      },
+      {
+        "table": "course_ksb_mapping",
+        "field": "is_production",
+        "purpose": "Flags which match_method's rows the active phase's Path Engine consumes",
+        "cross_ref_adr": "ADR-0035"
+      },
+      {
+        "table": "course_ksb_mapping",
+        "field": "is_recommended",
+        "purpose": "Top-scoring match per KSB, flagged separately per method",
+        "cross_ref_adr": "ADR-0036"
+      },
+      {
+        "table": "course_ksb_mapping",
+        "field": "curation_status",
+        "purpose": "Human-in-the-loop review status",
+        "cross_ref_adr": "ADR-0036, ADR-0042"
+      },
+      {
+        "table": "kpis",
+        "field": "kpi_type",
+        "purpose": "Lineage type of each KPI",
+        "cross_ref_adr": "ADR-0037"
+      },
+      {
+        "table": "kpi_competency_mapping",
+        "field": "(new table)",
+        "purpose": "K2.1-only bridge between KPIs and competencies, with primary/secondary weight",
+        "cross_ref_adr": "ADR-0037"
+      }
+    ],
+    "changes_thread5": [
+      {
+        "table": "learning_path_recommendations",
+        "field": "(table created)",
+        "purpose": "687 rows, one per open gap; course_id nullable for content-gap rows (19); sequence_order shared by rows using one course",
+        "cross_ref_adr": "ADR-0044, ADR-0045"
+      },
+      {
+        "table": "employees",
+        "field": "employee_id",
+        "purpose": "Re-keyed by joining order from a 1-1,400 pool (non-contiguous)",
+        "cross_ref_adr": "ADR-0047"
+      },
+      {
+        "table": "employee_ksb_gaps",
+        "field": "gap_size",
+        "purpose": "Observed range now -2 to +3 after re-draw",
+        "cross_ref_adr": "ADR-0047"
+      },
+      {
+        "table": "course_ksb_mapping",
+        "field": "curation_status",
+        "purpose": "All five values now used after NB03 L&D review",
+        "cross_ref_adr": "ADR-0043"
+      },
+      {
+        "table": "kpis, kpi_competency_mapping",
+        "field": "(generation)",
+        "purpose": "Now generated in NB01 code (C1.6, C1.6a)",
+        "cross_ref_adr": "ADR-0047"
+      }
+    ],
+    "extensibility_design": {
+      "principle": "Same schema, swappable matching/recommendation method; later phases extend it without a rebuild (reserved columns, not new tables).",
+      "swap_points": [
+        {
+          "table": "course_ksb_mapping",
+          "field": "match_method",
+          "phase1_value": "tfidf (production) + embedding (comparison)"
+        },
+        {
+          "table": "course_ksb_mapping",
+          "field": "match_explanation",
+          "phase1_value": "keyword list (tfidf), generic note (embedding)"
+        },
+        {
+          "table": "learning_path_recommendations",
+          "field": "recommendation_method",
+          "phase1_value": "rule_based"
+        },
+        {
+          "table": "learning_path_recommendations",
+          "field": "rationale",
+          "phase1_value": "rule output (gap, competency, K/S/B, also-covers, fit check, content-gap message)"
+        },
+        {
+          "table": "courses",
+          "field": "description_raw",
+          "phase1_value": "full text stored, so no re-collection is needed"
+        },
+        {
+          "table": "courses",
+          "field": "core_learning_or_behavioral_enabler",
+          "phase1_value": "Reserved. Empty in Phase 1."
+        },
+        {
+          "table": "courses",
+          "field": "comb_blueprint",
+          "phase1_value": "Reserved. Empty in Phase 1."
+        },
+        {
+          "table": "assessment_responses",
+          "field": "question_type = comb_*",
+          "phase1_value": "COM-B answers collected and held for later use"
+        }
+      ]
+    }
+  },
+  "schema_conventions": {
+    "note": "Locked in Thread 2 (ADR-0025); governs all field definitions in docs/04_schema_reference.md and all generation code.",
+    "primary_key_style": "<table_singular>_id, string, prefix code + zero-padded number (e.g. EMP0001, CRS001, KSB001)",
+    "foreign_key_naming": "FK columns always match the parent table's PK column name exactly — no renaming",
+    "timestamps": "Skipped by default. Real date fields kept only where genuinely used downstream (e.g. assessment_responses.assessment_date)",
+    "phase_tagging": "Fields tagged P1 (used in Phase 1) or P1-reserved (reserved, empty in Phase 1)",
+    "reserved_columns": "Reserved columns typed and NULL-able now, not added later (ADR-0019)",
+    "categorical_fields": "Documented enum — full allowed-value list written in docs/04_schema_reference.md, not DB-enforced",
+    "exceptions": [
+      {
+        "table": "proficiency_scale",
+        "field": "proficiency_level",
+        "exception": "Plain integer (1-4), not string-prefixed — used in direct gap arithmetic",
+        "cross_ref_adr": "ADR-0026"
+      },
+      {
+        "table": "role_competency_requirements",
+        "exception": "No surrogate PK — natural key is the (role_id, competency_id) pair",
+        "cross_ref_adr": "ADR-0026"
+      },
+      {
+        "table": "kpi_competency_mapping",
+        "exception": "No surrogate PK — natural key is the (kpi_id, competency_id) pair",
+        "cross_ref_adr": "ADR-0037"
+      }
+    ]
+  },
+  "phase_roadmap": {
+    "principle": "Reuse chain: later phases reuse Phase 1's schema and data unchanged, extending via reserved columns or new methods. All input data generated once, upfront, in NB01 (ADR-0019).",
+    "phases": [
+      {
+        "phase": 1,
+        "name": "Personalized Learning Path Engine",
+        "role": "Core, real, built and demoed artifact",
+        "engines": [
+          "Diagnostic/Gap Engine",
+          "Matching Engine (TF-IDF production + embeddings comparison)",
+          "L&D Curation Review",
+          "Recommendation/Path Engine"
+        ],
+        "ml_techniques": {
+          "supervised": "course-to-competency classifier, benchmarked vs. TF-IDF (NB02, done)",
+          "unsupervised": "LDA topic modeling on course catalog (NB02, done)"
+        },
+        "status": "Complete: NB01-NB04 done (Thread 6)",
+        "cross_ref_adr": [
+          "ADR-0010",
+          "ADR-0016",
+          "ADR-0017",
+          "ADR-0018",
+          "ADR-0019",
+          "ADR-0035",
+          "ADR-0036",
+          "ADR-0043",
+          "ADR-0045",
+          "ADR-0050",
+          "ADR-0051",
+          "ADR-0052",
+          "ADR-0055"
+        ]
+      },
+      {
+        "phase": 2,
+        "name": "GenAI upgrade",
+        "status": "coming soon"
+      },
+      {
+        "phase": 3,
+        "name": "Phase 3",
+        "status": "coming soon"
+      }
+    ]
+  },
+  "privacy_design": {
+    "principle": "GDPR-aligned privacy by design, applied to synthetic data as a portfolio credibility signal. Described as 'GDPR-aligned', never 'GDPR compliant' (ADR-0048). See ADR-0016.",
+    "built": [
+      "employees_pii split from employees (keyed by employee_id only)",
+      "per-employee-only access demo in NB03 Step 3.5 (view_my_path refuses other employees' paths)",
+      "path charts in NB04 Step 4.4 use the same gate (can_view); Step 4.4.5 shows a refusal",
+      "NB04 does not load employees_pii; figures show employee IDs only (data minimisation)",
+      "minimum group size check in NB04 (MIN_GROUP_SIZE = 5): groups under 5 people are never shown in summaries (ADR-0055)",
+      "aggregate-only KPI rollup (NB03) and dashboards (NB04)",
+      "human review before recommendations reach learners (NB03 Step 3.2)"
+    ],
+    "documented_only_not_built": [
+      "data-minimization field audit",
+      "encryption at rest, consent management, right-to-erasure, retention policy",
+      "real authentication and role-based access (NB03 login is simulated)"
+    ],
+    "real_life_note": "Employees see their path on Workday or a similar platform, signed in through Single Sign-On, which supplies logged_in_id. Managers see team summaries; L&D and leaders see totals only (ADR-0052)."
+  },
+  "evaluation_framework": {
+    "framework": "Logic Model (Inputs -> Activities -> Outputs -> Outcomes -> Impact)",
+    "artifact": "docs/logic_model.md",
+    "scope_boundary": "Project builds through the Output stage only. Outcomes and Impact are modeled conceptually but not simulated. NB03 KPI projections are best case: completion is not competence (ADR-0046).",
+    "cross_ref_adr": "ADR-0021, ADR-0046"
+  },
+  "pipeline_steps": {
+    "primary_tracker": "docs/pipeline_step_tracker.md - unified B/P step table, B1-B14 and P1-P28 plus P9a/P9b/P9c/P12a/P15a.",
+    "legacy_ref": "03_pipeline_steps.xlsx (Thread 1 original) - superseded by the primary tracker.",
+    "discipline_tags_used": [
+      "DS",
+      "NLP",
+      "ML",
+      "GenAI",
+      "Engineering"
+    ],
+    "data_generation_principle": "All synthetic input data generated once, upfront, in NB01 (ADR-0019). Fixes go into NB01 code and are re-run selectively (ADR-0038 target labels; ADR-0047 KPIs and employee IDs). Seed 42 keeps re-runs reproducible."
+  },
+  "reproducibility": {
+    "random_seed": 42,
+    "seed_note": "Fixed across all synthetic data generation and model-adjacent randomness (train/test split, Logistic Regression, LDA, employee ID shuffle), matching NLPCapstone01 convention."
+  },
+  "shared_assumptions": [
+    {
+      "assumption": "config.json and decisions.md are separate artifacts; notebooks reference ADRs by pointer. Both updated at the end of each thread/notebook.",
+      "cross_ref_adr": "ADR-0001"
+    },
+    {
+      "assumption": "Course catalog uses a synthetic repository as the primary dataset, not scraped real content.",
+      "cross_ref_adr": "ADR-0002"
+    },
+    {
+      "assumption": "A small set of real, publicly available excerpts (4, from arXiv) is used separately as a credibility sample.",
+      "cross_ref_adr": "ADR-0003"
+    },
+    {
+      "assumption": "2 job families (Instructional Design, Content/Solution Architecture) and their 4 roles selected for Phase 1. Project Management parked.",
+      "cross_ref_adr": "ADR-0004"
+    },
+    {
+      "assumption": "Research Incubator researchers are distributed across all 3 offices.",
+      "cross_ref_adr": "ADR-0005"
+    },
+    {
+      "assumption": "Japan is a client market only (served out of Pune), not a 4th office.",
+      "cross_ref_adr": "ADR-0006"
+    },
+    {
+      "assumption": "2 strategic goals selected from the original 5, with 2 KPIs each (4 total).",
+      "cross_ref_adr": "ADR-0007"
+    },
+    {
+      "assumption": "Required proficiency levels by role are deliberately bimodal/asymmetric.",
+      "cross_ref_adr": "ADR-0008"
+    },
+    {
+      "assumption": "A master employee table covers all 4 roles under the 2 in-scope job families at their real headcount (430 total).",
+      "cross_ref_adr": "ADR-0009, ADR-0032"
+    },
+    {
+      "assumption": "Schema is designed with swappable method fields, so later phases need no rebuild.",
+      "cross_ref_adr": "ADR-0010"
+    },
+    {
+      "assumption": "Google Colab (free, CPU-only) with Google Drive mounted is the build environment; project migrates to GitHub afterwards.",
+      "cross_ref_adr": "ADR-0011"
+    },
+    {
+      "assumption": "Notebook naming convention follows NB##_topic_subtopic.",
+      "cross_ref_adr": "ADR-0012"
+    },
+    {
+      "assumption": "random_state = 42 fixed across all generation and model randomness.",
+      "cross_ref_adr": "ADR-0013"
+    },
+    {
+      "assumption": "Folder structure is an industry-standard, GitHub-ready layout; Drive and GitHub map 1:1.",
+      "cross_ref_adr": "ADR-0014"
+    },
+    {
+      "assumption": "master_prompt.md lives in this project's Claude knowledge base only.",
+      "cross_ref_adr": "ADR-0015"
+    },
+    {
+      "assumption": "GDPR-aligned privacy by design: PII split, per-employee-only access, aggregate-only dashboards built; minimisation audit and full privacy framework documented only.",
+      "cross_ref_adr": "ADR-0016, ADR-0048"
+    },
+    {
+      "assumption": "Supervised classifier and LDA are comparison/exploratory only.",
+      "cross_ref_adr": "ADR-0017, ADR-0023"
+    },
+    {
+      "assumption": "One combined annual assessment stored as assessment_questions + assessment_responses (long format, two cycles).",
+      "cross_ref_adr": "ADR-0018"
+    },
+    {
+      "assumption": "Three-phase roadmap in one repository, each phase reusing the prior phase's schema/data.",
+      "cross_ref_adr": "ADR-0019"
+    },
+    {
+      "assumption": "Scope boundary for later phases; details published with that phase.",
+      "cross_ref_adr": "ADR-0020"
+    },
+    {
+      "assumption": "Logic Model adopted as the evaluation framework; project builds through the Output stage only.",
+      "cross_ref_adr": "ADR-0021"
+    },
+    {
+      "assumption": "Two-stage architecture diagram: rough sketch before schema finalization, polished diagram after Phase 1-3.",
+      "cross_ref_adr": "ADR-0022"
+    },
+    {
+      "assumption": "TF-IDF is the sole production matching pathway; classifier and LDA are comparison-only.",
+      "cross_ref_adr": "ADR-0023"
+    },
+    {
+      "assumption": "employees.vertical added; each employee assigned one of LLG's 5 client verticals.",
+      "cross_ref_adr": "ADR-0029"
+    },
+    {
+      "assumption": "Multi-category learning paths considered and NOT built — documented as a roadmap extension.",
+      "cross_ref_adr": "ADR-0030"
+    },
+    {
+      "assumption": "courses.course_source simulates a multi-source ingestion layer, correlated with content type.",
+      "cross_ref_adr": "ADR-0031"
+    },
+    {
+      "assumption": "employees table scoped to 430 rows, not ~1000.",
+      "cross_ref_adr": "ADR-0032"
+    },
+    {
+      "assumption": "Every notebook's first cell mounts Drive idempotently.",
+      "cross_ref_adr": "ADR-0033"
+    },
+    {
+      "assumption": "courses.csv is built by a COURSE_SPEC-style procedural generator (150 synthetic + 4 real rows).",
+      "cross_ref_adr": "ADR-0034"
+    },
+    {
+      "assumption": "NB02 builds and persists both TF-IDF (production) and embedding (comparison) matchers and reuses the embeddings for duplicate detection.",
+      "cross_ref_adr": "ADR-0035"
+    },
+    {
+      "assumption": "A human-in-the-loop curation_status field sits between matching and path generation, and a KPI Impact Rollup traces paths back to strategic_goals/kpis.",
+      "cross_ref_adr": "ADR-0036"
+    },
+    {
+      "assumption": "kpi_competency_mapping covers K2.1 only; KPIs typed by lineage; K2.2 reworded to an annual cadence.",
+      "cross_ref_adr": "ADR-0037"
+    },
+    {
+      "assumption": "Ground-truth course labels are persisted for benchmarking only; 24 rows are NULL by design.",
+      "cross_ref_adr": "ADR-0038"
+    },
+    {
+      "assumption": "The classifier-vs-TF-IDF benchmark is non-discriminating on synthetic data; the generator is not changed to make it harder.",
+      "cross_ref_adr": "ADR-0039"
+    },
+    {
+      "assumption": "LDA topic count is chosen by coherence after data-driven filler-word removal; exploratory only.",
+      "cross_ref_adr": "ADR-0040"
+    },
+    {
+      "assumption": "Duplicate detection uses a 0.95 cosine threshold on MiniLM vectors with connected components; detection only.",
+      "cross_ref_adr": "ADR-0041"
+    },
+    {
+      "assumption": "NB02 simulates curation with a rule (methods agree and score gap < 0.10).",
+      "cross_ref_adr": "ADR-0042"
+    },
+    {
+      "assumption": "The 19 ld_reviewed matches were resolved by a blind side-by-side L&D review with logged reasons; no automatic next-best replacement.",
+      "cross_ref_adr": "ADR-0043"
+    },
+    {
+      "assumption": "Skills with no suitable course appear in paths as 'coming soon' steps with interim manager/mentor support, and are logged as content gaps.",
+      "cross_ref_adr": "ADR-0044"
+    },
+    {
+      "assumption": "Paths are rule-based: biggest gap first, Knowledge > Skill > Behavior, shared course once, duplicate check; ksb_layer is a fit check only.",
+      "cross_ref_adr": "ADR-0045"
+    },
+    {
+      "assumption": "KPI Impact Rollup is computed in NB03 with optimistic and conservative projections, aggregate only; charted in NB04.",
+      "cross_ref_adr": "ADR-0046"
+    },
+    {
+      "assumption": "Fixes go into generating code, not generated CSVs; employee IDs follow joining order; re-run guards protect enriched files.",
+      "cross_ref_adr": "ADR-0047"
+    },
+    {
+      "assumption": "The per-employee access demo shows only an employee's own path; the design is described as GDPR-aligned, not compliant.",
+      "cross_ref_adr": "ADR-0048"
+    },
+    {
+      "assumption": "Repo is published in full under CC BY-NC 4.0 (credit required, no commercial use), not MIT.",
+      "cross_ref_adr": "ADR-0049"
+    },
+    {
+      "assumption": "Long paths are phased over annual cycles with two caps (35 course hours, 6 KSBs); display only.",
+      "cross_ref_adr": "ADR-0050"
+    },
+    {
+      "assumption": "NB04 figures are static matplotlib PNGs in reports/figures, step-numbered, one colour-blind-safe palette, numbers read from data.",
+      "cross_ref_adr": "ADR-0051"
+    },
+    {
+      "assumption": "Demo paths are picked by a median rule; charts use the same privacy gate as NB03; NB04 loads no PII.",
+      "cross_ref_adr": "ADR-0052"
+    },
+    {
+      "assumption": "Version 2 ideas are kept in a private knowledge-base file, not in Drive or GitHub.",
+      "cross_ref_adr": "ADR-0053"
+    },
+    {
+      "assumption": "Notes use two layers: a plain line, then an 'Under the hood' sub-bullet; code comments carry substep numbers.",
+      "cross_ref_adr": "ADR-0054"
+    },
+    {
+      "assumption": "Aggregate views hide groups under MIN_GROUP_SIZE (5); fixed in reporting, never by changing the data.",
+      "cross_ref_adr": "ADR-0055"
+    }
+  ],
+  "skip_flags": {
+    "skip_thread2_schema": false,
+    "skip_nb01_synthetic_data": false,
+    "skip_nb02_nlp_matching": false,
+    "skip_nb03_path_generation": false,
+    "skip_nb04_visualization": false,
+    "skip_readme_report": false,
+    "skip_github_setup": false
+  },
+  "licensing": {
+    "decision": "Split licence, settled at GitHub packaging: code (notebooks, scripts) under PolyForm Noncommercial 1.0.0 (LICENSE); data, docs and figures under CC BY-NC 4.0 (LICENSE-DATA-DOCS). Both require credit and forbid commercial use. Replaces the MIT plan in ADR-0014 (ADR-0049). Not legal advice.",
+    "cross_ref_adr": "ADR-0049",
+    "attribution_checklist": [
+      "Copyright line in LICENSE and README: '© 2026 Shilpa Kibe. Licensed under CC BY-NC 4.0.'",
+      "Author header at the top of each notebook (name, licence)",
+      "README line: datasets are original synthetic data created by Shilpa Kibe"
+    ]
+  },
+  "path_phasing": {
+    "note": "Added Thread 6. NB04 Step 4.3 (ADR-0050). Display only: computed in memory, not saved, no schema change.",
+    "settings": {
+      "ANNUAL_LEARNING_HOURS": 40,
+      "MANDATORY_HOURS": 5,
+      "PATH_HOURS_PER_CYCLE": 35,
+      "KSB_PER_CYCLE": 6
+    },
+    "grounding": "User's industry practice: 40 learning hours per year; mandatory and compliance modules assigned one at a time (max 3 a year, 45 to 60 minutes each, mostly Q3) plus QMS training, about 5 hours in total. K2.2 target gives 6 KSBs per year.",
+    "rule": "Steps in path order; a new cycle starts when the next step would break either cap. A shared course counts as 2 KSBs. 'Coming soon' steps are pending and not placed in a cycle.",
+    "result": "638 path steps. Employees by cycles needed: 1 cycle 8, 2 cycles 22, 3 or more cycles 25 (shown banded, ADR-0055). KSB cap set all 73 cycle breaks; hours cap never reached (mean path 6.6 course hours; max 5.9 hours in one cycle). By role: Solution Architects avg 1.8 cycles / 4.8 course hours; ID Leads avg 2.4 cycles / 6.8 course hours.",
+    "insight": "Absorption, not time, is the limit. Almost half of employees need 3 or more years; the NB03 'about 2 cycles' was an average. Real life: prioritise role-critical competencies first (not built). Paths are revisited every year; only Year 1 is a real plan, since a 3-year plan does not suit fast-changing skills.",
+    "limitations": "Course minutes are seat time only; practice and on-the-job application are not captured. No grounded practice-time multiplier exists, so none is applied.",
+    "cross_ref_adr": "ADR-0050, ADR-0046"
+  },
+  "figures": {
+    "note": "Added Thread 6 (ADR-0051). Saved by NB04 for the README.",
+    "library": "matplotlib only (NB04 adds no packages)",
+    "format": "PNG, 150 dpi, reports/figures/, named fig_<step>_<topic>.png",
+    "palette": "Colour-blind-safe: knowledge #0072B2, skill #E69F00, behavior #009E73, content gap hatched #999999, target dashed #D55E00, projections #9CC3E4",
+    "files": [
+      {
+        "file": "fig_0_architecture.png",
+        "step": "README",
+        "shows": "How Phase 1 works: inputs, analysis and NLP, L&D review, outputs"
+      },
+      {
+        "file": "fig_4_2_curation_flow.png",
+        "step": "4.2",
+        "shows": "Where L&D judgment sits: 30 AI matches to approved courses"
+      },
+      {
+        "file": "fig_4_3_cycles_needed.png",
+        "step": "4.3",
+        "shows": "How many yearly cycles each path needs (aggregate, banded: 1 / 2 / 3 or more)"
+      },
+      {
+        "file": "fig_4_4_paths_idlead_vs_sa.png",
+        "step": "4.4",
+        "shows": "Two contrasting paths: EMP0476 ID Lead vs EMP0188 Solution Architect"
+      },
+      {
+        "file": "fig_4_5_kpi_dashboard.png",
+        "step": "4.5",
+        "shows": "KPI impact: K2.2 and K2.1, actual vs projected vs target"
+      }
+    ],
+    "demo_selection": "Demo only (ADR-0052): employee closest to the role's median path length; ID Lead must have the KSB018 'coming soon' step. In real life nobody is picked.",
+    "cross_ref_adr": "ADR-0051, ADR-0052"
+  },
+  "documentation_conventions": {
+    "note": "Added Thread 6 (ADR-0054).",
+    "two_layer_notes": "Notebook markdown leads with a plain-language line; an indented 'Under the hood' sub-bullet names the function, file or rule. README uses the plain layer only. Code comments stay technical.",
+    "substep_numbering": "Every comment block in a code cell carries its substep number (Step N.x.y), from NB04 Step 4.2 onwards.",
+    "insights_style": "Notes/Insights: short, everyday words; no em dashes."
+  },
+  "minimum_group_size": {
+    "note": "Added Thread 6 close (ADR-0055). NB04 Step 4.1.5.",
+    "setting": "MIN_GROUP_SIZE = 5",
+    "function": "suppress_small_groups(df, group_col, count_col, min_size=None) -> (safe_table, n_suppressed); groups under the limit show \"Suppressed (<5)\"",
+    "applied_to": [
+      "Step 4.3.4 cycles chart (top band: 3 or more cycles)",
+      "Step 4.3.5 role and role x office breakdown",
+      "Step 4.5.1a KPI dashboard population check (55 passes)"
+    ],
+    "not_applied_to": [
+      "Step 4.2 (courses, not people)",
+      "Step 4.4 (individual paths, own-path-only gate)"
+    ],
+    "result": "Nothing suppressed in the cycles chart or by role; 3 Solution Architect office groups (1, 2, 2) suppressed in the role x office view.",
+    "limitation": "Simple threshold rule, not full statistical disclosure control. Many HR teams use 10; at 10 Solution Architects would be hidden at role level.",
+    "cross_ref_adr": "ADR-0055, ADR-0016, ADR-0048"
+  }
+}
